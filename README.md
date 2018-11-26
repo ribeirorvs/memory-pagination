@@ -40,5 +40,6 @@ To conclude this project I will do the follow changes.
 - Change the structure of the project to use OO (Object Oriented)
 - Change the package structure
 - Change the project to a JEE
+- Use Maven to manage the dependencies
 - Change the GUI to a web browser version
 - Change the project to MVC pattern
