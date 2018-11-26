@@ -2,8 +2,7 @@
 
 ## About this repository
 
-This repo contain an simulator of Memory Pagination Algorithm. This is an improve of the simulator created by SAMir SOLanki (solanki.samir@gmail.com).
-The original simulator have only two algorithms, FIFO and LRU, my improvement are include more two algorithms, LFU and OTIMO. Other improvmente I did is the change of the presentation. In the original, the sequence of proccess are ordened by the next to be substituted, but it turn the result dificult to understand, thinking in that I change the presentation to order the proccess in order it is included in the memory.
+This repo contain an simulator of Memory Pagination Algorithm. This is an improve of the simulator created by SAMir SOLanki (solanki.samir@gmail.com). You can download the original [(http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=5924&lngWId=2)](code here)
 
 ## Original README
 
@@ -29,6 +28,10 @@ Follow is showed the original README.
 >If you want theme based look, contact me..
 >
 >Thank you.
+
+## About the changes
+
+The original simulator have only two algorithms, FIFO and LRU, my improvement are include more two algorithms, LFU and OTIMO. Other improvmente I did is the change of the presentation. In the original, the sequence of proccess are ordened by the next to be substituted, but it turn the result dificult to understand, thinking in that I change the presentation to order the proccess in order it is included in the memory.
 
 ## Todo
 
