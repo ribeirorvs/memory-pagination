@@ -2,7 +2,7 @@
 
 ## About this repository
 
-This repo contain an simulator of Memory Pagination Algorithm. This is an improve of the simulator created by SAMir SOLanki (solanki.samir@gmail.com). You can download the original [(http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=5924&lngWId=2)] (code here)
+This repo contain an simulator of Memory Pagination Algorithm. This is an improve of the simulator created by SAMir SOLanki (solanki.samir@gmail.com). You can download the original [(code here)](http://www.planet-source-code.com/vb/scripts/ShowCode.asp?txtCodeId=5924&lngWId=2)
 
 ## Original README
 
