@@ -37,6 +37,8 @@ The original simulator have only two algorithms, FIFO and LRU, my improvement ar
 
 To conclude this project I will do the follow changes.
 
+- Include MRU algo
+- Change the process list input method to a unique list of integers
 - Change the structure of the project to use OO (Object Oriented)
 - Change the package structure
 - Change the project to a JEE
