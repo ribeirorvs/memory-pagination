@@ -81,7 +81,7 @@ import java.util.List;
         getContentPane().setLayout(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setTitle("Page Replacement Algorithm Simulation - SamSol");
+        setTitle("Page Replacement Algorithm Simulation");
         setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         setResizable(false);
         addWindowListener(new java.awt.event.WindowAdapter() {
@@ -452,7 +452,8 @@ import java.util.List;
 	
 	    private void jButton_AboutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AboutActionPerformed
 	// TODO add your handling code here:
-	        javax.swing.JOptionPane.showMessageDialog(this,"Developer : SAMir SOLanki (SamSol)\n" +"    Subject : Operating Systems\n" +"   Contact : solanki.samir@gmail.com","About Developer",javax.swing.JOptionPane.INFORMATION_MESSAGE); 
+	        javax.swing.JOptionPane.showMessageDialog(this,"Developer : SAMir SOLanki (SamSol)\n" +"Responsabilities : GUI, FIFO and LRU\n" +"Contact : solanki.samir@gmail.com\n\n" 
+					+ "Developer : Rodrigo Vitor Ribeiro\n" + "Responsabilities : LFU, OTIMO and Code optimze\n" +"Contact : ribeiro.rvs@hotmail.com","About Developer",javax.swing.JOptionPane.INFORMATION_MESSAGE);
 	    }//GEN-LAST:event_jButton_AboutActionPerformed
 	
 	    private void jButton_AddEditActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_AddEditActionPerformed
@@ -473,7 +474,8 @@ import java.util.List;
 	
 	    private void jButton_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton_ExitActionPerformed
 	// TODO add your handling code here:
-	        javax.swing.JOptionPane.showMessageDialog(this,"Developer : SAMir SOLanki (SamSol)\n" +"    Subject : Operating Systems\n" +"   Contact : solanki.samir@gmail.com","About Developer",javax.swing.JOptionPane.INFORMATION_MESSAGE); 
+	        javax.swing.JOptionPane.showMessageDialog(this,"Developer : SAMir SOLanki (SamSol)\n" +"Responsabilities : GUI, FIFO and LRU\n" +"Contact : solanki.samir@gmail.com\n\n" 
+	        												+ "Developer : Rodrigo Vitor Ribeiro\n" + "Responsabilities : LFU, OTIMO and Code optimze\n" +"Contact : ribeiro.rvs@hotmail.com","About Developer",javax.swing.JOptionPane.INFORMATION_MESSAGE); 
 	        System.exit(0);
 	    }//GEN-LAST:event_jButton_ExitActionPerformed
 	
@@ -599,7 +601,9 @@ import java.util.List;
 	        		break;
 	        	case "LFU":
 	        		List<Integer> qtd = new LinkedList<Integer>();
+	        		List<Integer> fifo = new LinkedList<Integer>();
 	        		fila.add(0);
+	        		fifo.add(0);
 	        		qtd.add(1);
 	        		for(i=1;i<col;i++)
 		            {
@@ -628,18 +632,30 @@ import java.util.List;
 		                if(!flg)
 		                {
 		                	if(fila.size() == row-1) {
-		                		int aux = fila.get(0);
-		                		Pages[i][aux] = refList.get(i);
-		                		fila.remove(0);
-		                		qtd.remove(0);
-		                		fila.add(0, aux);
+		                		int index = 3;
+		                		for(int j = 0; j < qtd.size(); j++) {
+		                			if(qtd.get(j) == qtd.get(0)) {
+		                				if(index > fifo.indexOf(fila.get(j))) {
+		                					index = fifo.indexOf(fila.get(j));
+		                				}
+		                			}
+		                		}
+		                		int aux = fila.indexOf(fifo.get(index));
+		                		int aux2 = fifo.get(index);
+		                		fila.remove(aux);
+		                		qtd.remove(aux);
+		                		Pages[i][aux2] = refList.get(i);
+		                		fila.add(0, aux2);
 		                		qtd.add(0, 1);
+		                		fifo.remove(index);
+		                		fifo.add(fila.get(0));
 		                	} else {
 		                		for (j=1; j<=i && j < row-1; j++) {
 		                			if(Pages[i-1][j] == "-") {
 		                				Pages[i][j] = refList.get(i);
-		                				fila.add(0, j);
-		                				qtd.add(0, 1);
+		                				fila.add(j);
+		                				fifo.add(j);
+		                				qtd.add(1);
 		                				break;
 		                			} 
 		                		}
@@ -690,8 +706,22 @@ import java.util.List;
 		                		Collections.sort(listAux);
 		                		if(listAux.get(0) > 0) {
 		                			index = list.indexOf(listAux.get(listAux.size()-1));
+		                			int aux = fila.indexOf(index);
+		                			fila.remove(aux);
+			                		fila.add(index);
 		                		} else {
-		                			index = list.indexOf(listAux.get(0));
+		                			int i = 0;
+		                			index = fila.indexOf(list.indexOf(listAux.get(i)));
+		                			while(i < listAux.size() && listAux.get(i) < 0 ) {
+		                				if(fila.indexOf(list.indexOf(listAux.get(i))) < index) {
+		                					index = fila.indexOf(list.indexOf(listAux.get(i)));
+		                				}
+		                				i++;
+		                			}
+		                			int aux = fila.get(index);
+		                			fila.remove(index);
+		                			fila.add(aux);
+		                			index = aux;
 		                		}
 		                		Pages[i][index] = refList.get(i);
 		                	} else {
@@ -708,7 +738,7 @@ import java.util.List;
 		            }
 	        		fila.clear();
 	        		break;
-	        		
+	        		//TODO include MFU algo
 	        }
 	        for(i=0;i<col;i++)
 	        {
